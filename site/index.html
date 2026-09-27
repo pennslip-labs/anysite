@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Notes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+</head>
+<body>
+<div class="shell">
+  <aside class="rail" id="rail">
+    <div class="brand">
+      <h1>Notes</h1>
+      <div style="display:flex; gap:6px;">
+        <button class="theme-toggle" id="theme-toggle" title="Toggle theme" aria-label="Toggle theme">◐</button>
+        <button class="rail-toggle" id="rail-toggle" aria-label="Toggle sidebar">☰</button>
+      </div>
+    </div>
+    <div class="rail-body">
+      <div class="search-box">
+        <input id="search-input" type="text" placeholder="Search… (⌘K)" autocomplete="off">
+        <div class="search-results" id="search-results"></div>
+      </div>
+      <div id="rail-body"></div>
+    </div>
+  </aside>
+  <main id="app"></main>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
