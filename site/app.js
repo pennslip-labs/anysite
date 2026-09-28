@@ -165,9 +165,14 @@
   // ---------------- pages ----------------
 
   function pageHome() {
+    if (DATA.mainObject && DATA.objects[DATA.mainObject]) {
+      return pageObject(DATA.mainObject);
+    }
+
     const types = Object.values(DATA.types).sort((a, b) => a.title.localeCompare(b.title));
     const counts = {};
     Object.values(DATA.objects).forEach((o) => (counts[o.typeTitle] = (counts[o.typeTitle] || 0) + 1));
+    const allObjects = Object.values(DATA.objects).sort((a, b) => a.title.localeCompare(b.title));
 
     const recent = Object.values(DATA.objects)
       .filter((o) => o.properties["Last modified date"])
@@ -177,14 +182,17 @@
     return `
       <div class="home-hero">
         <h1>Notes</h1>
-        <p>${DATA.objectCount} objects across ${types.length} types, exported from Anytype and rendered here with working cross-links, backlinks and search.</p>
+        <p>${DATA.objectCount} objects${DATA.renderTypes !== false ? ` across ${types.length} types` : ""}, exported from Anytype and rendered here with working cross-links, backlinks and search.</p>
       </div>
-      <table class="type-table">
+      ${DATA.renderTypes !== false ? `<table class="type-table">
         <thead><tr><th>Type</th><th>Count</th></tr></thead>
         <tbody>
           ${types.map((t) => `<tr><td><a href="#/type/${encodeURIComponent(t.title)}">${esc(t.plural)}</a></td><td>${counts[t.title] || 0}</td></tr>`).join("")}
         </tbody>
-      </table>
+      </table>` : `<table class="list-table">
+        <thead><tr><th>Object</th><th>Type</th></tr></thead>
+        <tbody>${allObjects.map((o) => `<tr><td>${objLink(o.slug)}</td><td style="color:var(--faint);font-family:var(--mono);font-size:12px;">${esc(o.typeTitle)}</td></tr>`).join("")}</tbody>
+      </table>`}
       ${recent.length ? `<h2 style="font-family:var(--mono);font-size:12px;color:var(--faint);">Recently modified</h2>
       <table class="list-table"><tbody>
         ${recent.map((o) => `<tr><td>${objLink(o.slug)}</td><td style="color:var(--faint);font-family:var(--mono);font-size:12px;">${esc(o.typeTitle)}</td><td style="color:var(--faint);font-family:var(--mono);font-size:12px;">${fmtDate(o.properties["Last modified date"])}</td></tr>`).join("")}
@@ -239,7 +247,7 @@
     const inLinks = (obj.inLinks || []).filter((s) => s !== slug);
 
     return `
-      <div class="crumbs"><a href="#/">Home</a><span class="sep">/</span><a href="#/type/${encodeURIComponent(obj.typeTitle)}">${esc(type.plural)}</a><span class="sep">/</span>${esc(obj.title)}</div>
+      <div class="crumbs"><a href="#/">Home</a><span class="sep">/</span>${DATA.renderTypes !== false ? `<a href="#/type/${encodeURIComponent(obj.typeTitle)}">${esc(type.plural)}</a>` : esc(type.plural)}<span class="sep">/</span>${esc(obj.title)}</div>
       <div class="obj-header">
         <span class="type-badge">${esc(obj.typeTitle)}</span>
         <h1>${esc(obj.title)}</h1>
@@ -287,15 +295,21 @@
     const param = decodeURIComponent(rest.join("/"));
 
     let html;
+    let visitedObjectSlug = null;
     if (!hash || head === "") html = pageHome();
-    else if (head === "o") html = pageObject(param);
-    else if (head === "type") html = pageType(param);
+    else if (head === "o") { visitedObjectSlug = param; html = pageObject(param); }
+    else if (head === "type") html = DATA.renderTypes !== false ? pageType(param) : pageHome();
     else if (head === "tag") html = pageTag(param);
     else if (head === "missing") html = pageMissing(param);
     else if (head === "diagnostics") html = pageDiagnostics();
     else html = pageHome();
 
     $app.innerHTML = html;
+    if ((!hash || head === "") && DATA.mainObject && DATA.objects[DATA.mainObject]) {
+      visitedObjectSlug = DATA.mainObject;
+    }
+    if (visitedObjectSlug && DATA.objects[visitedObjectSlug]) rememberObjectVisit(visitedObjectSlug);
+    if (DATA.renderTypes === false) renderRecentPages();
     window.scrollTo(0, 0);
     highlightRailActive();
   }
@@ -309,6 +323,12 @@
   // ---------------- rail (sidebar) ----------------
 
   function renderRail() {
+    if (DATA.renderTypes === false) {
+      document.getElementById("rail-body").innerHTML = `<nav><h2>Recently visited</h2><ul id="recent-pages"></ul></nav>`;
+      renderRecentPages();
+      return;
+    }
+
     const types = Object.values(DATA.types).sort((a, b) => a.title.localeCompare(b.title));
     const counts = {};
     Object.values(DATA.objects).forEach((o) => (counts[o.typeTitle] = (counts[o.typeTitle] || 0) + 1));
@@ -333,6 +353,31 @@
         </div>
       </nav>
     `;
+  }
+
+  function getRecentObjectSlugs() {
+    try {
+      const recent = JSON.parse(localStorage.getItem("anytype-viewer-recent-pages") || "[]");
+      return Array.isArray(recent) ? recent.filter((slug) => DATA.objects[slug]).slice(0, 12) : [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function rememberObjectVisit(slug) {
+    try {
+      const recent = getRecentObjectSlugs().filter((item) => item !== slug);
+      localStorage.setItem("anytype-viewer-recent-pages", JSON.stringify([slug, ...recent].slice(0, 12)));
+    } catch (e) {}
+  }
+
+  function renderRecentPages() {
+    const list = document.getElementById("recent-pages");
+    if (!list) return;
+    const recent = getRecentObjectSlugs();
+    list.innerHTML = recent.length
+      ? recent.map((slug) => `<li><a href="#/o/${encodeURIComponent(slug)}">${esc(DATA.objects[slug].title)}</a></li>`).join("")
+      : `<li class="recent-empty">No pages visited yet</li>`;
   }
 
   // ---------------- search ----------------

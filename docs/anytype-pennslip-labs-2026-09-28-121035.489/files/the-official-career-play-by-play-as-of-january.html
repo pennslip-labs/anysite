@@ -1,0 +1,744 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>the official career play by play (as of @January 1, 2026) </title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2db12276-ddb4-8028-8667-f8c1000b2714" class="page sans"><header><img class="page-cover-image" src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?ixlib=rb-4.1.0&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb" style="object-position:center 50%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">🕹️</span></div><h1 class="page-title" dir="auto">the official career play by play (as of <time>@January 1, 2026</time>) </h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="auto"><p id="2db12276-ddb4-8060-bf94-c6dc2b782f9f" class="">link to the conversation with copilot where I got everything below from &gt; <a href="https://copilot.microsoft.com/shares/xumfBC3W5dvijvv6gKoaG">https://copilot.microsoft.com/shares/xumfBC3W5dvijvv6gKoaG</a> </p></div><div style="display:contents" dir="ltr"><figure class="block-color-purple_background callout" style="white-space:pre-wrap;display:flex" id="2db12276-ddb4-80f9-a3c8-d8b589e96777"><div style="font-size:1.5em"><img class="icon notion-static-icon" src="https://app.notion.com/icons/battery-charging_green.svg"/></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="2db12276-ddb4-80ae-8d98-f7dcb89892cf" class="">I cant do everything at the same time. that’s a recipe for disaster, burnout, and un-needed struggle. I must do everything sequentially as listed so that I can build on everything with intention, purpose, and excellency.</p></div><div style="display:contents" dir="auto"><p id="2db12276-ddb4-8013-8b5e-fca49645aea9" class="">I <em>can</em> apply to jobs during my last semester, though focus and energy should be prioritized for my classes so that I can actually leave and conclude it as a chapter</p></div></div></figure></div><div style="display:contents" dir="auto"><h1 id="2db12276-ddb4-802a-8f12-f8148d768dc4" class="">1. breaking out of Tim Hortons </h1></div><div style="display:contents" dir="ltr"><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="2db12276-ddb4-80c3-b399-c7467fb07d18"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="2db12276-ddb4-80d8-907f-cc7e8781b857" class="">first and foremost, I need to break my way out of Tim Hortons or else I’ll be wasting energy slinging coffees 5 days a week just to make ends-meat while still trying to build a portfolio for my career.</p></div></div></figure></div><div style="display:contents" dir="auto"><p id="2db12276-ddb4-80f2-9492-dc2c25f8ec99" class="">focusing on tech-adjacent jobs would be a score as it would already get me closer into the computer sciences and away from food services. All while helping to add more relevant experience on to my resume for future positions and giving way to more possible connections and networking options.</p></div><div style="display:contents" dir="auto"><ul id="2db12276-ddb4-80e2-8ddd-c8abb11f832a" class="toggle"><li><details open=""><summary>a list of roles I can target that can get me closer to my career goals</summary><div style="display:contents" dir="auto"><ul id="2db12276-ddb4-80cd-a49f-f1bc30f43453" class="bulleted-list"><li style="list-style-type:disc"><strong>QA Tester / Software Tester</strong> — Run tests, find bugs, document issues, verify fixes.</li></ul></div><div style="display:contents" dir="auto"><ul id="2db12276-ddb4-8067-ba03-ecfdf6f1a2ed" class="bulleted-list"><li style="list-style-type:disc"><strong>IT Support / Help Desk</strong> — Troubleshoot user problems, set up accounts/devices, resolve technical issues.</li></ul></div><div style="display:contents" dir="auto"><ul id="2db12276-ddb4-80fd-9f87-d96ad7566955" class="bulleted-list"><li style="list-style-type:disc"><strong>Junior Automation Tester</strong> — Write simple scripts to automate software testing.</li></ul></div><div style="display:contents" dir="auto"><ul id="2db12276-ddb4-807f-8c85-f707ca090a3a" class="bulleted-list"><li style="list-style-type:disc"><strong>Technical Support Engineer</strong> — Debug customer issues using logs/APIs, reproduce bugs, escalate to engineering.</li></ul></div><div style="display:contents" dir="auto"><ul id="2db12276-ddb4-8007-baa4-edcfa90b4ddd" class="bulleted-list"><li style="list-style-type:disc"><strong>Junior Data Technician</strong> — Clean data, run SQL queries, build basic reports or dashboards.</li></ul></div><div style="display:contents" dir="auto"><ul id="2db12276-ddb4-8057-a550-e86562fe6b8b" class="bulleted-list"><li style="list-style-type:disc"><strong>Junior Business Analyst</strong> — Gather requirements, map workflows, support project managers.</li></ul></div><div style="display:contents" dir="auto"><ul id="2db12276-ddb4-809a-9a6d-db6621119f19" class="bulleted-list"><li style="list-style-type:disc"><strong>Accessibility Tester</strong> — Check apps for WCAG compliance, test with screen readers, report accessibility issues.</li></ul></div><div style="display:contents" dir="auto"><ul id="2db12276-ddb4-8053-a9e2-c7ad38b8ae0b" class="bulleted-list"><li style="list-style-type:disc"><strong>Software Implementation Specialist</strong> — Configure software for clients, train users, troubleshoot onboarding.</li></ul></div></details></li></ul></div><div style="display:contents" dir="ltr"><figure class="block-color-orange_background callout" style="white-space:pre-wrap;display:flex" id="2db12276-ddb4-803a-9bdc-c2612e03bbf4"><div style="font-size:1.5em"><img class="icon notion-static-icon" src="https://app.notion.com/icons/bullseye_red.svg"/></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="2db12276-ddb4-8069-b9d3-c6ca9569d003" class="">my goal is to go all in for applications and land a new job within <time>@May 1, 2026 → June 30, 2026</time>. isn’t a hard deadline, though its something to help me keep on track </p></div></div></figure></div><div style="display:contents" dir="auto"><h1 id="2db12276-ddb4-80fc-982e-fe4de1637e02" class="">2. building a HCSE focused portfolio of projects on github</h1></div><div style="display:contents" dir="ltr"><figure class="block-color-purple_background callout" style="white-space:pre-wrap;display:flex" id="2db12276-ddb4-8010-895a-e820ba659779"><div style="font-size:1.5em"><img class="icon notion-static-icon" src="https://app.notion.com/icons/battery-charging_green.svg"/></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="2db12276-ddb4-80b5-b243-ce772ccb7c97" class="">I already have a couple projects either in the making or that I want to start detailed in <a href="https://app.notion.com/p/project-zone-2db12276ddb481ce889ecc609662c486?pvs=21"><img class="icon" src="Dexters-Laboratory-Made-Jokes-Only-Adults-Could-Understand-1100x513_5f7875eb323ab.jpeg"/>project zone</a>. once I get a stable job I can get going with this. </p></div></div></figure></div><div style="display:contents" dir="auto"><p id="2db12276-ddb4-8060-bc1a-f5b31154a032" class="">starting with something small to just help show some technical ability like the <a href="https://app.notion.com/p/Work-Schedule-Merger-2db12276ddb48103a169d4b7e4bbd70d?pvs=21"><span class="icon">🗓️</span>Work Schedule Merger</a> could help me get going. showcasing it on my GitHub and in the <a href="https://app.notion.com/p/project-zone-2db12276ddb481ce889ecc609662c486?pvs=21"><img class="icon" src="Dexters-Laboratory-Made-Jokes-Only-Adults-Could-Understand-1100x513_5f7875eb323ab.jpeg"/>project zone</a> as something to help people merge peoples work schedule easier given their workplace doesn&#x27;t give them that ease.</p></div><div style="display:contents" dir="auto"><p id="2db12276-ddb4-80ad-949d-f2990ef022a4" class="">though it would be imperative to get going with my <a href="https://app.notion.com/p/periodt-2db12276ddb481a4a7fac4dff150a641?pvs=21"><img class="icon notion-static-icon" src="https://app.notion.com/icons/water_red.svg"/>periodt.</a> project as it will help me gro my skills the most. given it’s scope.</p></div><div style="display:contents" dir="auto"><p id="2db12276-ddb4-8051-aa56-c99c25bf2bc5" class="">still need to consider some other projects though that I can do alongside <a href="https://app.notion.com/p/periodt-2db12276ddb481a4a7fac4dff150a641?pvs=21"><img class="icon notion-static-icon" src="https://app.notion.com/icons/water_red.svg"/>periodt.</a> given it may take some time to complete given its scope.</p></div><div style="display:contents" dir="ltr"><figure class="block-color-orange_background callout" style="white-space:pre-wrap;display:flex" id="2db12276-ddb4-80b1-9165-e762576af06f"><div style="font-size:1.5em"><img class="icon notion-static-icon" src="https://app.notion.com/icons/burst_green.svg"/></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="2db12276-ddb4-80e7-81f6-fac96a4fbc41" class="">note that I don’t need a bazillion projects. focus on getting 2-3 excellent examples of my skills and value that I bring rather than a bunch of junk. making sure to target projects that actually solve problems.</p></div><div style="display:contents" dir="auto"><p id="2db12276-ddb4-8090-9627-ec9bca73d77b" class="">also any new ideas and methods, before show casing them, make sure that their either patented or under a <strong>protective license</strong> so no one i showcase them to steals my ideas.</p></div></div></figure></div><div style="display:contents" dir="auto"><ul id="2db12276-ddb4-80d1-a8e3-ff0606eec68e" class="toggle"><li><details open=""><summary>some extra ideas for projects more tailored to the field for inspiration</summary><div style="display:contents" dir="auto"><ul id="2db12276-ddb4-8007-88cd-ca2138c9d230" class="bulleted-list"><li style="list-style-type:disc">A smart‑home interface that adapts to elderly users</li></ul></div><div style="display:contents" dir="auto"><ul id="2db12276-ddb4-807c-b1af-f46e749618fd" class="bulleted-list"><li style="list-style-type:disc">A task manager that adjusts UI based on cognitive load</li></ul></div><div style="display:contents" dir="auto"><ul id="2db12276-ddb4-8058-adf3-e9daba42dedc" class="bulleted-list"><li style="list-style-type:disc">A study tool that adapts to different learning styles</li></ul></div><div style="display:contents" dir="auto"><ul id="2db12276-ddb4-8064-b908-c2738895cddf" class="bulleted-list"><li style="list-style-type:disc">A visual modeling tool for capturing human‑centered requirements</li></ul></div><div style="display:contents" dir="auto"><ul id="2db12276-ddb4-80a1-8c4f-cdb4c942fcd1" class="bulleted-list"><li style="list-style-type:disc">An accessibility‑first web app with multiple user profiles</li></ul></div></details></li></ul></div><div style="display:contents" dir="ltr"><figure class="block-color-blue_background callout" style="white-space:pre-wrap;display:flex" id="2dc12276-ddb4-804e-bf4f-c63206216e14"><div style="font-size:1.5em"><img class="icon notion-static-icon" src="https://app.notion.com/icons/computer-chip_orange.svg"/></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="2dc12276-ddb4-8064-a966-c90698c985ff" class="">Once I’ve found a job that’s more tech centered, it would be in my best interest to enter any tech competitions as well to help build on my experience and networking</p></div></div></figure></div><div style="display:contents" dir="auto"><h2 id="2db12276-ddb4-803e-b859-ed7af5e1d1a2" class="">application strategy</h2></div><div style="display:contents" dir="ltr"><figure class="block-color-orange_background callout" style="white-space:pre-wrap;display:flex" id="2db12276-ddb4-8024-a3c3-e56fbd0d9baa"><div style="font-size:1.5em"><img class="icon notion-static-icon" src="https://app.notion.com/icons/burst_green.svg"/></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="2db12276-ddb4-804b-9037-faedeaf6dde0" class="">imperative that i do more <em>focused bursts</em> of applying and resume building.</p></div></div></figure></div><div style="display:contents" dir="auto"><p id="2db12276-ddb4-8057-b77f-f5ac47e3a9ab" class="">doing applications in waves can help me avoid job-hunting burn-out while also giving myself time and space to do other things in my life.</p></div><div style="display:contents" dir="auto"><ul id="2db12276-ddb4-80dd-95ea-da9a8d697789" class="bulleted-list"><li style="list-style-type:disc">starting with a week of focused applications</li></ul></div><div style="display:contents" dir="auto"><ul id="2db12276-ddb4-8085-aff3-fc55dab550fb" class="bulleted-list"><li style="list-style-type:disc">then following with a resting period, skill building, or resume tweaking</li></ul></div><div style="display:contents" dir="auto"><p id="2db12276-ddb4-80d7-9047-c560820ec670" class="">make sure to follow the to-do list within <a href="https://app.notion.com/p/Job-Application-Tracker-2d912276ddb480e0b110ea1f3dc550c0?pvs=21"><span class="icon">📋</span>Job Application Tracker</a> </p></div><div style="display:contents" dir="auto"><h3 id="2db12276-ddb4-803a-b1df-f911490bb295" class="">concise plan job application cycle</h3></div><div style="display:contents" dir="ltr"><figure class="block-color-orange_background callout" style="white-space:pre-wrap;display:flex" id="2db12276-ddb4-803a-9df8-ddff327d01d0"><div style="font-size:1.5em"><img class="icon notion-static-icon" src="https://app.notion.com/icons/burst_green.svg"/></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="2db12276-ddb4-80e4-ad7b-f4f6ac9a1efe" class="">this way I have a simple idea of what i should do from week to week as to keep myself from feeling lost</p></div></div></figure></div><div style="display:contents" dir="auto"><ol type="1" id="2db12276-ddb4-8072-9f92-f95258e21536" class="numbered-list" start="1"><li>Apply in Wave 1 for 1–2 weeks to the easiest entry roles. Aim for 20–30 targeted applications during this wave.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="2db12276-ddb4-8023-a79f-de35755cdd95" class="numbered-list" start="2"><li>Take a Rest + Skill Week for 1–2 weeks to recharge, practice interview questions, lightly improve your resume or GitHub, or add a small feature to a project if you feel like it.</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="2db12276-ddb4-80d9-81d7-df7d35bcde1f" class="numbered-list" start="3"><li>Apply in Wave 2 for 1–2 weeks to the slightly more technical roles</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="2db12276-ddb4-80e1-9c15-d71b2e98eeee" class="numbered-list" start="4"><li>Repeat the cycle of Wave → Rest until you land a job, keeping the rhythm consistent without tying yourself to rigid deadlines.</li></ol></div><div style="display:contents" dir="auto"><h2 id="2db12276-ddb4-8071-bbd8-f002490f2322" class="">roles that have the best chance of giving me job once graduated</h2></div><div style="display:contents" dir="auto"><p id="2db12276-ddb4-8077-85e0-e3f6805528cc" class="">these roles are the most likely to hire new grads given they don’t require too much technical experience or portfolio work. all while getting me out of Tim Hortons:</p></div><div style="display:contents" dir="auto"><ol type="1" id="2db12276-ddb4-80b3-bce3-e95d2e5fc558" class="numbered-list" start="1"><li>QA/software tester</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="2db12276-ddb4-8010-b32e-d15b6fe335ea" class="numbered-list" start="2"><li>IT support</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="2db12276-ddb4-80b1-90c0-dede38e3de35" class="numbered-list" start="3"><li>accessibility tester</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="2db12276-ddb4-80af-8ecb-ebf601a0506c" class="numbered-list" start="4"><li>junior data technician</li></ol></div><div style="display:contents" dir="auto"><p id="2db12276-ddb4-8087-bb91-de3fa9c182a8" class="">once i get more technical confidence and experience either from portfolio work, or the jobs above i can move into these jobs to help further build my skills inline with HCSE</p></div><div style="display:contents" dir="auto"><ol type="1" id="2db12276-ddb4-80f7-9cdf-e87824791ca0" class="numbered-list" start="1"><li>technical support engineer</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="2db12276-ddb4-80b5-84a6-deeb7bcfd3f1" class="numbered-list" start="2"><li>software implementation specialist</li></ol></div><div style="display:contents" dir="auto"><ol type="1" id="2db12276-ddb4-804d-8569-f3f083a6477a" class="numbered-list" start="3"><li>junior automation tester</li></ol></div><div style="display:contents" dir="auto"><h1 id="2db12276-ddb4-8015-86cd-fb7f46404d29" class="">3. use my tech-adjacent job to pivot into HCSE roles</h1></div><div style="display:contents" dir="auto"><p id="2db12276-ddb4-80ce-b049-d2705e66c7ff" class="">once I&#x27;ve built some good connections, have projects under my built, and actually have some tech related experience i can start pivoting towards HCSE focused jobs.</p></div><div style="display:contents" dir="ltr"><figure class="block-color-orange_background callout" style="white-space:pre-wrap;display:flex" id="2db12276-ddb4-806d-98f2-e7e436958371"><div style="font-size:1.5em"><img class="icon notion-static-icon" src="https://app.notion.com/icons/burst_green.svg"/></div><div style="width:100%"><div style="display:contents" dir="auto"><p id="2db12276-ddb4-80d0-bfb1-c5767afc49a5" class="">during my journey through this process, it would be helpful as well to define more clearly why exactly I want to get into this field, and what the work and products of said work mean to me.</p></div></div></figure></div><div style="display:contents" dir="auto"><ul id="2db12276-ddb4-80fa-8471-dae9661b7e13" class="toggle"><li><details open=""><summary>list of possible roles to shift into</summary><div style="display:contents" dir="auto"><ul id="2db12276-ddb4-802a-a33d-e25060b6e60e" class="bulleted-list"><li style="list-style-type:disc"><strong>UX Engineer / UX Technologist</strong> — Build interactive UI components, prototype designs, improve usability.</li></ul></div><div style="display:contents" dir="auto"><ul id="2db12276-ddb4-80ca-a6df-c65d62de396d" class="bulleted-list"><li style="list-style-type:disc"><strong>Accessibility Engineer</strong> — Implement accessible UI, fix WCAG issues, ensure compatibility with assistive tech.</li></ul></div><div style="display:contents" dir="auto"><ul id="2db12276-ddb4-805f-b0e1-f27a73de6ad6" class="bulleted-list"><li style="list-style-type:disc"><strong>Human‑Centered Requirements Engineer</strong> — Interview users, document human‑centric needs, model personas and contexts.</li></ul></div><div style="display:contents" dir="auto"><ul id="2db12276-ddb4-8050-9358-f2d2b4298a71" class="bulleted-list"><li style="list-style-type:disc"><strong>Model‑Driven Engineering Specialist</strong> — Build visual models, design domain‑specific languages, generate code from models.</li></ul></div><div style="display:contents" dir="auto"><ul id="2db12276-ddb4-802c-a907-f5dae3c28a5a" class="bulleted-list"><li style="list-style-type:disc"><strong>Human‑AI Interaction Engineer</strong> — Design adaptive interfaces, ensure AI is explainable, test human‑AI workflows.</li></ul></div><div style="display:contents" dir="auto"><ul id="2db12276-ddb4-80d2-8021-de7cca41962c" class="bulleted-list"><li style="list-style-type:disc"><strong>UX Researcher / HCSE Researcher</strong> — Conduct interviews, usability tests, analyze user behavior, produce insights.</li></ul></div></details></li></ul></div><div style="display:contents" dir="auto"><p id="2db12276-ddb4-8091-851c-ea342ae3fe61" class="">
+</p></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

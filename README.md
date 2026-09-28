@@ -39,6 +39,55 @@ it lives), then:
 node build/build.mjs content docs
 ```
 
+To make a specific object the site's home page, pass its Markdown filename
+without `.md` as `--main`. The build includes only objects reachable by
+following links outward from that object. Objects outside that subgraph are
+omitted from the generated site, including its navigation, search, and
+backlinks. Only assets referenced by objects in the subgraph are copied.
+`Backlinks` properties are reverse references and do not expand the subgraph.
+With type indexes enabled (the default), the indexes remain available and each
+lists only reachable objects of that type.
+
+For example, if `main-object` is selected, only `Main`, `A`, and `B` are
+included. `Predecessor` and `External` point into the subgraph, but those
+incoming links do not make either object reachable from `Main`. A `Backlinks`
+property is treated as reverse-reference metadata, not as an outgoing edge:
+
+```mermaid
+flowchart LR
+  subgraph Included["Included in build: reachable from Main"]
+    Main["Main (--main)"] --> A["Successor A"]
+    A --> B["Successor B"]
+  end
+  Predecessor["Excluded: points to Main only"] --> Main
+  External["Excluded: points to Successor B only"] --> B
+  classDef included fill:#e7f4e4,stroke:#367a36,color:#172b17
+  classDef excluded fill:#fce8e6,stroke:#b3261e,color:#541b16
+  class Main,A,B included
+  class Predecessor,External excluded
+```
+
+The included subgraph is formed by repeatedly following outgoing links from
+`Main`. Type indexes, search, and navigation use only that same included set.
+
+```
+node build/build.mjs content docs --main my-main-object
+```
+
+To omit type index pages and use the sidebar for recently visited objects, add
+`--no-types`. The home page lists the objects directly, and the sidebar keeps
+the last 12 objects visited in that browser:
+
+```
+node build/build.mjs content docs --no-types
+```
+
+The options can be combined:
+
+```
+node build/build.mjs content docs --main my-main-object --no-types
+```
+
 Open `docs/index.html` with any static file server to check it locally, e.g.:
 
 ```

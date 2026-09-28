@@ -1,0 +1,252 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "urn:anytype:schema:2026-09-28:type-6a58510168ff761c2d6c46a2:ver-1.0",
+  "type": "object",
+  "title": "People",
+  "description": "An enriched version of Contacts that I can sync together to avoid having contacts in different places like phone numbers, and socials",
+  "x-app": "Anytype",
+  "x-icon-name": "people",
+  "x-plural": "People",
+  "x-schema-version": "1.0",
+  "x-type-key": "6a58510168ff761c2d6c46a2",
+  "properties": {
+    "id": {
+      "description": "Unique identifier of the Anytype object",
+      "readOnly": true,
+      "type": "string",
+      "x-hidden": true,
+      "x-key": "id",
+      "x-order": 0
+    },
+    "Object type": {
+      "const": "People",
+      "description": "Relation that stores the object's type",
+      "readOnly": true,
+      "type": "string",
+      "x-featured": true,
+      "x-format": "object",
+      "x-key": "type",
+      "x-order": 1
+    },
+    "Company": {
+      "type": "string",
+      "x-featured": true,
+      "x-format": "longtext",
+      "x-key": "6a5850db68ff761c2d6c469d",
+      "x-order": 2
+    },
+    "Position": {
+      "examples": [
+        "Android Developer",
+        "Web Developer",
+        "Researcher",
+        "QA Manager",
+        "Brake Specialist",
+        "Recruiter",
+        "Jr Quality Assurance Analyst",
+        "IT Specialist",
+        "IS Support Technician",
+        "New Grad Sofware Engineer",
+        "Tech Strategist",
+        "Service Technician",
+        "Employment Specialist",
+        "Service Agent",
+        "Student Career Advisor",
+        "Technical Support",
+        "Junior Dev",
+        "Video Game Tester",
+        "Finance Associate",
+        "Instructor",
+        "Software Developer",
+        "Proffesor",
+        "Service Advisor"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "type": "array",
+      "x-featured": true,
+      "x-format": "tag",
+      "x-key": "69f17fbf68ff76120fbc8d97",
+      "x-order": 3
+    },
+    "Email": {
+      "format": "email",
+      "type": "string",
+      "x-featured": true,
+      "x-format": "email",
+      "x-key": "6a4870cb68ff76149b515a3e",
+      "x-order": 4
+    },
+    "Phone": {
+      "pattern": "^[+]?[0-9\\s()-]+$",
+      "type": "string",
+      "x-featured": true,
+      "x-format": "phone",
+      "x-key": "6a4870dc68ff76149b515a3f",
+      "x-order": 5
+    },
+    "Tag": {
+      "examples": [
+        "school",
+        "travel",
+        "cleaning",
+        "organization",
+        "Documentation",
+        "marriage",
+        "networking",
+        "entertainment",
+        "side-note",
+        "Math",
+        "thoughts",
+        "re-occurring",
+        "work",
+        "government",
+        "Jobs",
+        "Writing",
+        "chore",
+        "coding",
+        "thinking",
+        "literacy",
+        "money",
+        "personal",
+        "fitness",
+        "self help",
+        "health",
+        "self care",
+        "prompt",
+        "career",
+        "exploration",
+        "romance",
+        "misc.",
+        "kitchen",
+        "programming",
+        "faith",
+        "conversation",
+        "skill building",
+        "food",
+        "chores",
+        "family",
+        "hobbies",
+        "development",
+        "entrepreneurship"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "type": "array",
+      "x-format": "tag",
+      "x-key": "tag",
+      "x-order": 6
+    },
+    "Backlinks": {
+      "description": "List of links coming to object",
+      "items": {
+        "type": "string"
+      },
+      "readOnly": true,
+      "type": "array",
+      "x-format": "object",
+      "x-key": "backlinks",
+      "x-order": 7
+    },
+    "Creation date": {
+      "description": "Date when the object was initially created",
+      "format": "date-time",
+      "readOnly": true,
+      "type": "string",
+      "x-format": "date",
+      "x-key": "createdDate",
+      "x-order": 8
+    },
+    "Created by": {
+      "description": "Human which created this object",
+      "items": {
+        "type": "string"
+      },
+      "readOnly": true,
+      "type": "array",
+      "x-format": "object",
+      "x-key": "creator",
+      "x-object-types": [
+        "bafyreihyj2kbk6zk4rmadgpihfa6dj5vytfvxmebpxpej6u5w5mp32hsfa"
+      ],
+      "x-order": 9
+    },
+    "Links": {
+      "description": "Outgoing links",
+      "items": {
+        "type": "string"
+      },
+      "readOnly": true,
+      "type": "array",
+      "x-format": "object",
+      "x-key": "links",
+      "x-order": 10
+    },
+    "LinkedIn": {
+      "format": "uri",
+      "type": "string",
+      "x-format": "url",
+      "x-key": "6a92e57568ff761a1d364b4f",
+      "x-order": 11
+    },
+    "Last modified date": {
+      "description": "Date when the object was modified last time",
+      "format": "date-time",
+      "readOnly": true,
+      "type": "string",
+      "x-format": "date",
+      "x-hidden": true,
+      "x-key": "lastModifiedDate",
+      "x-order": 12
+    },
+    "Last modified by": {
+      "description": "Human who updated the object last time",
+      "items": {
+        "type": "string"
+      },
+      "readOnly": true,
+      "type": "array",
+      "x-format": "object",
+      "x-hidden": true,
+      "x-key": "lastModifiedBy",
+      "x-object-types": [
+        "bafyreihyj2kbk6zk4rmadgpihfa6dj5vytfvxmebpxpej6u5w5mp32hsfa"
+      ],
+      "x-order": 13
+    },
+    "Last opened date": {
+      "description": "Date when the object was modified last opened",
+      "format": "date-time",
+      "readOnly": true,
+      "type": "string",
+      "x-format": "date",
+      "x-hidden": true,
+      "x-key": "lastOpenedDate",
+      "x-order": 14
+    },
+    "Emoji": {
+      "type": "string",
+      "x-format": "emoji",
+      "x-hidden": true,
+      "x-key": "iconEmoji",
+      "x-order": 15
+    },
+    "Image": {
+      "description": "Path to the file in the export",
+      "type": "string",
+      "x-format": "file",
+      "x-hidden": true,
+      "x-key": "iconImage",
+      "x-order": 16
+    },
+    "Cover image or color": {
+      "type": "string",
+      "x-format": "longtext",
+      "x-hidden": true,
+      "x-key": "coverId",
+      "x-order": 17
+    }
+  }
+}

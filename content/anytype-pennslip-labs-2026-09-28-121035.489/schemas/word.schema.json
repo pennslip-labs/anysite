@@ -1,0 +1,216 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "urn:anytype:schema:2026-09-28:type-6a050929421aa906d55c68dc:ver-1.0",
+  "type": "object",
+  "title": "Word",
+  "description": "words, terms, concepts and their definitions",
+  "x-app": "Anytype",
+  "x-icon-name": "text",
+  "x-plural": "Dictionary",
+  "x-schema-version": "1.0",
+  "x-type-key": "6a050929421aa906d55c68dc",
+  "properties": {
+    "id": {
+      "description": "Unique identifier of the Anytype object",
+      "readOnly": true,
+      "type": "string",
+      "x-hidden": true,
+      "x-key": "id",
+      "x-order": 0
+    },
+    "Object type": {
+      "const": "Word",
+      "description": "Relation that stores the object's type",
+      "readOnly": true,
+      "type": "string",
+      "x-featured": true,
+      "x-format": "object",
+      "x-key": "type",
+      "x-order": 1
+    },
+    "Creation date": {
+      "description": "Date when the object was initially created",
+      "format": "date-time",
+      "readOnly": true,
+      "type": "string",
+      "x-featured": true,
+      "x-format": "date",
+      "x-key": "createdDate",
+      "x-order": 2
+    },
+    "Backlinks": {
+      "description": "List of links coming to object",
+      "items": {
+        "type": "string"
+      },
+      "readOnly": true,
+      "type": "array",
+      "x-featured": true,
+      "x-format": "object",
+      "x-key": "backlinks",
+      "x-order": 3
+    },
+    "Tag": {
+      "examples": [
+        "school",
+        "travel",
+        "cleaning",
+        "organization",
+        "Documentation",
+        "marriage",
+        "networking",
+        "entertainment",
+        "side-note",
+        "Math",
+        "thoughts",
+        "re-occurring",
+        "work",
+        "government",
+        "Jobs",
+        "Writing",
+        "chore",
+        "coding",
+        "thinking",
+        "literacy",
+        "money",
+        "personal",
+        "fitness",
+        "self help",
+        "health",
+        "self care",
+        "prompt",
+        "career",
+        "exploration",
+        "romance",
+        "misc.",
+        "kitchen",
+        "programming",
+        "faith",
+        "conversation",
+        "skill building",
+        "food",
+        "chores",
+        "family",
+        "hobbies",
+        "development",
+        "entrepreneurship"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "type": "array",
+      "x-featured": true,
+      "x-format": "tag",
+      "x-key": "tag",
+      "x-order": 4
+    },
+    "Links": {
+      "description": "Outgoing links",
+      "items": {
+        "type": "string"
+      },
+      "readOnly": true,
+      "type": "array",
+      "x-format": "object",
+      "x-key": "links",
+      "x-order": 5
+    },
+    "Chapter NO.": {
+      "examples": [
+        "Ch. 6",
+        "Ch. 2",
+        "Ch. 13",
+        "Ch. 32",
+        "Ch. 12",
+        "Ch. 8",
+        "Ch. 15",
+        "Ch. 16",
+        "Ch. 9",
+        "Ch. 4",
+        "Ch. 3",
+        "Ch. 5",
+        "Ch. 7",
+        "Ch. 1"
+      ],
+      "items": {
+        "type": "string"
+      },
+      "type": "array",
+      "x-format": "tag",
+      "x-key": "6a173a8668ff7610d244b944",
+      "x-order": 6
+    },
+    "Created by": {
+      "description": "Human which created this object",
+      "items": {
+        "type": "string"
+      },
+      "readOnly": true,
+      "type": "array",
+      "x-format": "object",
+      "x-hidden": true,
+      "x-key": "creator",
+      "x-object-types": [
+        "bafyreihyj2kbk6zk4rmadgpihfa6dj5vytfvxmebpxpej6u5w5mp32hsfa"
+      ],
+      "x-order": 7
+    },
+    "Last modified date": {
+      "description": "Date when the object was modified last time",
+      "format": "date-time",
+      "readOnly": true,
+      "type": "string",
+      "x-format": "date",
+      "x-hidden": true,
+      "x-key": "lastModifiedDate",
+      "x-order": 8
+    },
+    "Last modified by": {
+      "description": "Human who updated the object last time",
+      "items": {
+        "type": "string"
+      },
+      "readOnly": true,
+      "type": "array",
+      "x-format": "object",
+      "x-hidden": true,
+      "x-key": "lastModifiedBy",
+      "x-object-types": [
+        "bafyreihyj2kbk6zk4rmadgpihfa6dj5vytfvxmebpxpej6u5w5mp32hsfa"
+      ],
+      "x-order": 9
+    },
+    "Last opened date": {
+      "description": "Date when the object was modified last opened",
+      "format": "date-time",
+      "readOnly": true,
+      "type": "string",
+      "x-format": "date",
+      "x-hidden": true,
+      "x-key": "lastOpenedDate",
+      "x-order": 10
+    },
+    "Emoji": {
+      "type": "string",
+      "x-format": "emoji",
+      "x-hidden": true,
+      "x-key": "iconEmoji",
+      "x-order": 11
+    },
+    "Image": {
+      "description": "Path to the file in the export",
+      "type": "string",
+      "x-format": "file",
+      "x-hidden": true,
+      "x-key": "iconImage",
+      "x-order": 12
+    },
+    "Cover image or color": {
+      "type": "string",
+      "x-format": "longtext",
+      "x-hidden": true,
+      "x-key": "coverId",
+      "x-order": 13
+    }
+  }
+}

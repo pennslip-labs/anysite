@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Anytype export -> static site data builder.
 //
-// Usage: node build/build.mjs [contentDir] [outDir]
+// Usage: node build/build.mjs [contentDir] [outDir] [--main slug] [--no-types]
 // Defaults: contentDir = "content", outDir = "docs"
 //
 // Reads every .md file (Anytype object export) and every .schema.json file
@@ -10,7 +10,8 @@
 // viewer (site/index.html + site/app.js) reads at runtime. Any other file
 // (images, attachments Anytype put under files/) is copied through
 // unchanged at its original relative path so existing "files/xxx.jpg"
-// references in the export keep working untouched.
+// references in the export keep working untouched. Rooted builds copy only
+// assets referenced by objects reachable from --main.
 
 import fs from "node:fs";
 import path from "node:path";
@@ -20,8 +21,32 @@ import { fileURLToPath } from "node:url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(__dirname, "..");
 
-const contentDir = path.resolve(REPO_ROOT, process.argv[2] || "content");
-const outDir = path.resolve(REPO_ROOT, process.argv[3] || "docs");
+const args = process.argv.slice(2);
+const positionalArgs = [];
+let mainObjectSlug = null;
+let hasMainArg = false;
+let renderTypes = true;
+for (let i = 0; i < args.length; i++) {
+  if (args[i] === "--main") {
+    hasMainArg = true;
+    mainObjectSlug = args[++i];
+  } else if (args[i].startsWith("--main=")) {
+    hasMainArg = true;
+    mainObjectSlug = args[i].slice("--main=".length);
+  } else if (args[i] === "--no-types") {
+    renderTypes = false;
+  } else {
+    positionalArgs.push(args[i]);
+  }
+}
+const contentDir = path.resolve(REPO_ROOT, positionalArgs[0] || "content");
+const outDir = path.resolve(REPO_ROOT, positionalArgs[1] || "docs");
+
+if (hasMainArg && (!mainObjectSlug || mainObjectSlug.startsWith("--"))) {
+  console.error("Missing object slug after --main.");
+  console.error("Usage: node build/build.mjs [contentDir] [outDir] --main object-slug");
+  process.exit(1);
+}
 
 if (!fs.existsSync(contentDir)) {
   console.error(`Content directory not found: ${contentDir}`);
@@ -169,6 +194,12 @@ for (const file of mdFiles) {
 
 console.log(`Parsed ${Object.keys(objects).length} objects.`);
 
+if (mainObjectSlug && !objects[mainObjectSlug]) {
+  console.error(`Main object not found: ${mainObjectSlug}`);
+  console.error("Use the object's Markdown filename without the .md extension.");
+  process.exit(1);
+}
+
 // ---------- 4. resolve links + compute backlink graph ----------
 
 const mdLinkRe = /\]\(([^)]+\.md)\)/g;
@@ -200,6 +231,7 @@ for (const rec of Object.values(objects)) {
 
   // (b) relation-style frontmatter properties whose values are filenames
   for (const [key, val] of Object.entries(rec.properties)) {
+    if (key.toLowerCase() === "backlinks") continue;
     const arr = Array.isArray(val) ? val : [val];
     for (const item of arr) {
       if (typeof item === "string" && item.endsWith(".md")) {
@@ -221,6 +253,17 @@ for (const rec of Object.values(objects)) {
   }
 }
 
+const mainReachableSlugs = new Set();
+if (mainObjectSlug) {
+  const pending = [mainObjectSlug];
+  while (pending.length) {
+    const slug = pending.pop();
+    if (mainReachableSlugs.has(slug)) continue;
+    mainReachableSlugs.add(slug);
+    pending.push(...objects[slug].outLinks);
+  }
+}
+
 // ---------- 5. assemble output ----------
 
 function pickType(title) {
@@ -228,7 +271,18 @@ function pickType(title) {
 }
 
 const outObjects = {};
-for (const rec of Object.values(objects)) {
+const includedObjects = Object.values(objects).filter(
+  (rec) => !mainObjectSlug || mainReachableSlugs.has(rec.slug)
+);
+const includedAssetFiles = mainObjectSlug
+  ? assetFiles.filter((file) => {
+      const basename = path.basename(file);
+      return includedObjects.some((rec) =>
+        `${rec.body}\n${JSON.stringify(rec.properties)}`.includes(basename)
+      );
+    })
+  : assetFiles;
+for (const rec of includedObjects) {
   outObjects[rec.slug] = {
     slug: rec.slug,
     id: rec.id,
@@ -237,28 +291,36 @@ for (const rec of Object.values(objects)) {
     relDir: rec.relDir === "." ? "" : rec.relDir,
     properties: rec.properties,
     body: rec.body,
-    outLinks: [...rec.outLinks],
-    inLinks: [...rec.inLinks],
+    outLinks: [...rec.outLinks].filter((slug) => !mainObjectSlug || mainReachableSlugs.has(slug)),
+    inLinks: mainObjectSlug
+      ? rec.slug === mainObjectSlug
+        ? []
+        : [...rec.inLinks].filter((slug) => mainReachableSlugs.has(slug))
+      : [...rec.inLinks],
   };
 }
 
 const outTypes = {};
 for (const [title, def] of Object.entries(typesByTitle)) {
-  outTypes[title] = def;
+  if (!mainObjectSlug || includedObjects.some((rec) => rec.typeTitle === title)) {
+    outTypes[title] = def;
+  }
 }
 // also register any object types that appeared in the export without a schema file
-for (const rec of Object.values(objects)) {
+for (const rec of includedObjects) {
   if (!outTypes[rec.typeTitle]) outTypes[rec.typeTitle] = fallbackType(rec.typeTitle);
 }
 
 const outBroken = Object.entries(brokenRefs).map(([ref, fromSet]) => ({
   ref,
-  referencedBy: [...fromSet],
-}));
+  referencedBy: [...fromSet].filter((slug) => !mainObjectSlug || mainReachableSlugs.has(slug)),
+})).filter((entry) => entry.referencedBy.length);
 
 const data = {
   generatedAt: new Date().toISOString(),
   objectCount: Object.keys(outObjects).length,
+  mainObject: mainObjectSlug,
+  renderTypes,
   types: outTypes,
   objects: outObjects,
   brokenRefs: outBroken,
@@ -276,11 +338,16 @@ for (const f of fs.readdirSync(siteDir)) {
   fs.copyFileSync(path.join(siteDir, f), path.join(outDir, f));
 }
 
-// copy every non-md/non-schema asset through at its original relative path
+// copy retained assets through at their original relative paths
 let copied = 0;
+const includedAssetSet = new Set(includedAssetFiles);
 for (const file of assetFiles) {
   const rel = path.relative(contentDir, file);
   const dest = path.join(outDir, rel);
+  if (!includedAssetSet.has(file)) {
+    if (fs.existsSync(dest)) fs.rmSync(dest);
+    continue;
+  }
   fs.mkdirSync(path.dirname(dest), { recursive: true });
   fs.copyFileSync(file, dest);
   copied++;
